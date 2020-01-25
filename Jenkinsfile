@@ -6,6 +6,7 @@ stage('Print Build Info') {
     }
 } 
 
+
 // stage('Disable balancer') {
 //     disableBalancerUtils()
 // } stage('Deploy') {
@@ -43,6 +44,15 @@ pipeline {
 
 
     stages {
+        stage ('Example') {
+            steps {
+                script { 
+                    log.info 'Starting'
+                    log.warning 'Nothing to do!'
+                }
+            }
+        }
+        
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
