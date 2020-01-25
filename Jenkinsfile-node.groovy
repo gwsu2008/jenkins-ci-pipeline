@@ -17,11 +17,6 @@ node {
             stage('Cleanup workspace') {
                 step([$class: 'WsCleanup'])
             }
-            
-            ansiColor('xterm') {
-                // Just some echoes to show the ANSI color.
-                stage "\u001B[31mI'm Red\u001B[0m Now not"
-            }
 
             parameters {
                 string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
