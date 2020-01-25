@@ -77,11 +77,12 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }
-
-        stage('Check Status') {
-            checkStatus()
-        }
     }
+
+    stage('Check Status') {
+        checkStatus()
+    }
+    
     post {
         always {
             echo 'This will always run'
