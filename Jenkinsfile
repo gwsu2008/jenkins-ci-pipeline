@@ -87,6 +87,9 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }
+        stage('CheckStatus') {
+            checkStatus()
+        }
     }
 
     post {
