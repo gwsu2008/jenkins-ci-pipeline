@@ -46,8 +46,13 @@ node {
                 '''
         }
 
-        stage('Check Env') {
-            sh 'printenv'
+        withEnv(['DISABLE_AUTH=true',
+             'DB_ENGINE=sqlite']) {
+            stage('Check Env') {
+                echo "Database engine is ${DB_ENGINE}"
+                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                sh 'printenv'
+            }
         }
 
         stage('Test') {
@@ -78,7 +83,7 @@ node {
     }
     
 
-    post {
+    finally  {
         always {
             echo 'This will always run'
         }
