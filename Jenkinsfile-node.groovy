@@ -12,41 +12,30 @@ config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.
 
 
 node {
-    ansiColor('xterm') {
-        // Just some echoes to show the ANSI color.
-        stage "\u001B[31mI'm Red\u001B[0m Now not"
-    }
+    timestamps {
+        ansiColor('xterm') {
+            // Just some echoes to show the ANSI color.
+            stage "\u001B[31mI'm Red\u001B[0m Now not"
+        }
 
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        parameters {
+            string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+            text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+            booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+            choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+            password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+        }
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
-
-    properties ([ 
-        buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '5')),
-        disableConcurrentBuilds()
-    ])
-    
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-        branch_name = "${env.BRANCH_NAME}"
-        awesomeVersion = sh(returnStdout: true, script: 'echo 0.0.1')
-    }
-
+        properties ([ 
+            buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '5')),
+            disableConcurrentBuilds()
+        ])
 
         stage ('Script') {
-                script { 
-                    logs.info 'Starting'
-                    logs.warning 'Nothing to do!'
-                }
+            script { 
+                logs.info 'Starting'
+                logs.warning 'Nothing to do!'
+            }
         }
 
         stage('Build') {
@@ -110,4 +99,5 @@ node {
             echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
+     }
 }
