@@ -4,15 +4,17 @@ stage('Print Build Info') {
     printBuildinfo {
         name = "Sample Name"
     }
-} stage('Disable balancer') {
-    disableBalancerUtils()
-} stage('Deploy') {
-    deploy()
-} stage('Enable balancer') {
-    enableBalancerUtils()
-} stage('Check Status') {
-    checkStatus()
-}
+} 
+
+// stage('Disable balancer') {
+//     disableBalancerUtils()
+// } stage('Deploy') {
+//     deploy()
+// } stage('Enable balancer') {
+//     enableBalancerUtils()
+// } stage('Check Status') {
+//     checkStatus()
+// }
 
 pipeline {
     agent any
@@ -74,6 +76,10 @@ pipeline {
 
                 echo "Password: ${params.PASSWORD}"
             }
+        }
+
+        stage('Check Status') {
+            checkStatus()
         }
     }
     post {
