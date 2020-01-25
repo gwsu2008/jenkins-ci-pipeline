@@ -39,10 +39,10 @@ pipeline {
                     logs.info 'Starting'
                     logs.warning 'Nothing to do!'
                 }
-            }
-            steps {
-                printBuildinfo {
-                    name = "Sample Name"
+                {
+                    printBuildinfo {
+                        name = "Sample Name"
+                    }
                 }
             }
         }
