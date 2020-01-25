@@ -1,4 +1,4 @@
-@Library('jenkins-pipeline-shared-lib-sample')_
+@Library(['my-shared-library','jenkins-pipeline-shared-lib-sample'])_
 
 stage('Print Build Info') {
     printBuildinfo {
@@ -77,10 +77,6 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }
-    }
-
-    step('Check Status') {
-        checkStatus()
     }
 
     post {
