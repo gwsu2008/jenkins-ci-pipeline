@@ -29,10 +29,10 @@ node {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
 
-    options { 
-        buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '5'))
+    properties ([ 
+        buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '5')),
         disableConcurrentBuilds()
-    }
+    ])
     
     environment {
         DISABLE_AUTH = 'true'
