@@ -94,10 +94,10 @@ pipeline {
         }
         
         stage('Git-Checkout') {
-            def config = [:]
-            config["branch"] = "master"
-            config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.git"
             steps {
+                def config = [:]
+                config["branch"] = "master"
+                config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.git"
                 gitCheckout(config)
             }
         }
