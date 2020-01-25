@@ -47,8 +47,8 @@ pipeline {
         stage ('Script') {
             steps {
                 script { 
-                    log.info 'Starting'
-                    log.warning 'Nothing to do!'
+                    logs.info 'Starting'
+                    logs.warning 'Nothing to do!'
                 }
             }
         }
