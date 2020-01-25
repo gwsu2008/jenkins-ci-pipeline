@@ -88,6 +88,7 @@ node {
             echo 'I am UNSTABLE :/'
         } else if (currentBuild.result == 'FAILURE') {
             echo 'I am FAILURE :/'
+        }
         else {
             echo 'One way or another, I have finished'
         }
