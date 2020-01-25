@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    optinos {buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '2'))}
+    optinos { buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '2')) }
     options { disableConcurrentBuilds() }
     
     environment {
