@@ -23,6 +23,9 @@ pipeline {
         DB_ENGINE    = 'sqlite'
     }
 
+    log.info 'Starting'
+    log.warning 'Nothing to do!'
+
     stages {
         stage('Build') {
             steps {
