@@ -1,21 +1,5 @@
 @Library(['my-shared-library','jenkins-pipeline-shared-lib-sample'])_
 
-stage('Print Build Info') {
-    printBuildinfo {
-        name = "Sample Name"
-    }
-} 
-
-
-// stage('Disable balancer') {
-//     disableBalancerUtils()
-// } stage('Deploy') {
-//     deploy()
-// } stage('Enable balancer') {
-//     enableBalancerUtils()
-// } stage('Check Status') {
-//     checkStatus()
-// }
 
 def config = [:]
 config["branch"] = "master"
@@ -54,6 +38,11 @@ pipeline {
                 script { 
                     logs.info 'Starting'
                     logs.warning 'Nothing to do!'
+                }
+            }
+            steps {
+                printBuildinfo {
+                    name = "Sample Name"
                 }
             }
         }
