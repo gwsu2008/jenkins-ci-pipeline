@@ -34,6 +34,8 @@ pipeline {
     environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
+        branch_name = "${env.BRANCH_NAME}"
+        awesomeVersion = sh(returnStdout: true, script: 'echo 0.0.1')
     }
 
 
