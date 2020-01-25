@@ -23,10 +23,11 @@ pipeline {
         DB_ENGINE    = 'sqlite'
     }
 
-    log.info 'Starting'
-    log.warning 'Nothing to do!'
 
     stages {
+        log.info 'Starting'
+        log.warning 'Nothing to do!'
+
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
