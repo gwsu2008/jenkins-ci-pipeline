@@ -27,12 +27,16 @@ pipeline {
 
 
     stages {
+        stage('Print Build Info') {
+            printBuildinfo { name = "Sample Name" }
+        }
+
         stage('Build') {
             steps {
                 script { 
                     log.info 'Starting'
                     log.warning 'Nothing to do!'
-                 }
+                }
                 sh 'echo "Hello World"'
                 sh '''
                     echo "Multiline shell steps works too"
