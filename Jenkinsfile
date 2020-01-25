@@ -1,8 +1,16 @@
 pipeline {
-    properties([disableConcurrentBuilds()])
-
     agent any
-
+    buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '2'))
+    options([[$class: 'ThrottleJobProperty',
+            categories: ['xcodebuild'],
+            limitOneJobWithMatchingParams: false,
+            maxConcurrentPerNode: 0,
+            maxConcurrentTotal: 0,
+            paramsToUseForLimit: '',
+            throttleEnabled: true,
+            disableConcurrentBuilds(),
+            throttleOption: 'category']])
+    
     environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
