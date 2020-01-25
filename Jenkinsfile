@@ -17,6 +17,11 @@ stage('Print Build Info') {
 //     checkStatus()
 // }
 
+def config = [:]
+config["branch"] = "master"
+config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.git"
+
+
 pipeline {
     agent any
 
@@ -95,9 +100,6 @@ pipeline {
         
         stage('Git-Checkout') {
             steps {
-                def config = [:]
-                config["branch"] = "master"
-                config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.git"
                 gitCheckout(config)
             }
         }
