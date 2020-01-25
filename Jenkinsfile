@@ -79,10 +79,10 @@ pipeline {
         }
     }
 
-    stage('Check Status') {
+    step('Check Status') {
         checkStatus()
     }
-    
+
     post {
         always {
             echo 'This will always run'
