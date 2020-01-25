@@ -25,11 +25,10 @@ pipeline {
 
 
     stages {
-        log.info 'Starting'
-        log.warning 'Nothing to do!'
-
         stage('Build') {
             steps {
+                log.info 'Starting'
+                log.warning 'Nothing to do!'
                 sh 'echo "Hello World"'
                 sh '''
                     echo "Multiline shell steps works too"
