@@ -42,7 +42,6 @@ node {
     }
 
 
-    stages {
         stage ('Script') {
             steps {
                 script { 
@@ -96,12 +95,12 @@ node {
             }
         }
         
-        stage('Git-Checkout') {
-            steps {
-                gitCheckout(config)
-            }
+    stage('Git-Checkout') {
+        steps {
+            gitCheckout(config)
         }
     }
+    
 
     post {
         always {
