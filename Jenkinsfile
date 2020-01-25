@@ -39,10 +39,13 @@ pipeline {
                     logs.info 'Starting'
                     logs.warning 'Nothing to do!'
                 }
-                {
-                    printBuildinfo {
-                        name = "Sample Name"
-                    }
+            }
+        }
+
+        stage('BuildInfo') {
+            steps {
+                printBuildinfo {
+                    name = "Sample Name"
                 }
             }
         }
@@ -56,6 +59,7 @@ pipeline {
                 '''
             }
         }
+
         stage('Check Env') {
             steps {
                 echo "Database engine is ${DB_ENGINE}"
@@ -63,11 +67,13 @@ pipeline {
                 sh 'printenv'
             }
         }
+
         stage('Test') {
             steps {
                 sh 'echo "Success!"; exit 0'
             }
         }
+
         stage('Example') {
             steps {
                 echo "Hello ${params.PERSON}"
@@ -81,6 +87,7 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }
+        
         stage('CheckStatus') {
             steps {
                 checkStatus()
