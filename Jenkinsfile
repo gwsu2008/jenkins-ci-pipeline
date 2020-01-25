@@ -1,7 +1,9 @@
 pipeline {
     agent any
-    options { buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '2')) }
-    options { disableConcurrentBuilds() }
+    options { 
+        buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '2'))
+        disableConcurrentBuilds()
+    }
     
     environment {
         DISABLE_AUTH = 'true'
