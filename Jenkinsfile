@@ -1,5 +1,10 @@
 @Library(['my-shared-library','jenkins-pipeline-shared-lib-sample'])_
 
+stage('printBuildinfo') {
+    printBuildinfo {
+        name = "Sample Name"
+    }
+}
 
 def config = [:]
 config["branch"] = "master"
@@ -42,14 +47,6 @@ pipeline {
             }
         }
 
-        stage('BuildInfo') {
-            steps {
-                printBuildinfo {
-                    name = "Sample Name"
-                }
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
@@ -87,7 +84,7 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }
-        
+
         stage('CheckStatus') {
             steps {
                 checkStatus()
