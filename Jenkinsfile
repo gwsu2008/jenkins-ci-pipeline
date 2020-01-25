@@ -88,7 +88,9 @@ pipeline {
             }
         }
         stage('CheckStatus') {
-            checkStatus()
+            steps {
+                checkStatus()
+            }
         }
     }
 
