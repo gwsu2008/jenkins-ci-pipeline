@@ -43,40 +43,32 @@ node {
 
 
         stage ('Script') {
-            steps {
                 script { 
                     logs.info 'Starting'
                     logs.warning 'Nothing to do!'
                 }
-            }
         }
 
         stage('Build') {
-            steps {
                 sh 'echo "Hello World"'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
                 '''
-            }
         }
 
         stage('Check Env') {
-            steps {
                 echo "Database engine is ${DB_ENGINE}"
                 echo "DISABLE_AUTH is ${DISABLE_AUTH}"
                 sh 'printenv'
-            }
+
         }
 
         stage('Test') {
-            steps {
                 sh 'echo "Success!"; exit 0'
-            }
         }
 
         stage('Example') {
-            steps {
                 echo "Hello ${params.PERSON}"
 
                 echo "Biography: ${params.BIOGRAPHY}"
@@ -86,19 +78,17 @@ node {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
-            }
+            
         }
 
         stage('CheckStatus') {
-            steps {
+
                 checkStatus()
-            }
+            
         }
         
     stage('Git-Checkout') {
-        steps {
-            gitCheckout(config)
-        }
+         gitCheckout(config)
     }
     
 
