@@ -44,7 +44,7 @@ pipeline {
 
 
     stages {
-        stage ('Example') {
+        stage ('Script') {
             steps {
                 script { 
                     log.info 'Starting'
@@ -52,7 +52,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
