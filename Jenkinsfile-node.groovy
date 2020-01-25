@@ -81,9 +81,11 @@ node ('master') {
             def currentResult = currentBuild.result ?: 'SUCCESS'
             def previousResult = currentBuild.getPreviousBuild()?.result
             if (currentResult == 'UNSTABLE') {
-                echo 'This will run only if the run was marked as unstable'
+                echo 'This will run only if the run was marked as UNSTABLE'
             }
-            
+            if (currentResult == 'FAILURE') {
+                echo 'This will run only if the run was marked as FAILURE'
+            }
             if (previousResult != null && previousResult != currentResult) {
                 echo 'This will run only if the state of the Pipeline has changed'
                 echo 'For example, if the Pipeline was previously failing but is now successful'
