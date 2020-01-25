@@ -14,6 +14,10 @@ config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.
 node {
     timestamps {
         try {
+            stage('Cleanup workspace') {
+                step([$class: 'WsCleanup'])
+            }
+            
             ansiColor('xterm') {
                 // Just some echoes to show the ANSI color.
                 stage "\u001B[31mI'm Red\u001B[0m Now not"
@@ -62,15 +66,10 @@ node {
 
             stage('Example') {
                 echo "Hello ${params.PERSON}"
-
                 echo "Biography: ${params.BIOGRAPHY}"
-
                 echo "Toggle: ${params.TOGGLE}"
-
                 echo "Choice: ${params.CHOICE}"
-
                 echo "Password: ${params.PASSWORD}"
-            
             }
 
             stage('CheckStatus') {
@@ -90,7 +89,7 @@ node {
             echo 'I am FAILURE :/'
         }
         else {
-            echo 'One way or another, I have finished'
+            echo 'I have finished'
         }
     }
 }
