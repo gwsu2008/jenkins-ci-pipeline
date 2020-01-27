@@ -39,7 +39,8 @@ node ('master') {
             }
 
             stage('Build') {
-                sh 'echo "Hello World"'
+                commitId = utils.readCommitId(serviceDir)
+                sh 'echo "Hello World. Build commit '${commitId}'"'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
