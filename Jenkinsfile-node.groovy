@@ -14,9 +14,9 @@ config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.
 node ('master') {
     timestamps {
         try {
-            stage('Cleanup workspace') {
-                step([$class: 'WsCleanup'])
-            }
+            // stage('Cleanup workspace') {
+            //     step([$class: 'WsCleanup'])
+            // }
 
             parameters {
                 string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
