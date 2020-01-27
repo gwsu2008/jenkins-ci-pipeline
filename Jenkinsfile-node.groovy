@@ -40,6 +40,7 @@ node ('master') {
 
             stage('Build') {
                 def workDir = "${WORKSPACE}"
+                sh 'find . '
                 commitId = utils.readCommitId(workDir)
                 sh 'echo "Hello World. Build commit '${commitId}'"'
                 sh '''
