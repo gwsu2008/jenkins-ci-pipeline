@@ -42,7 +42,7 @@ node ('master') {
                 test_config = [:]
                 test_config["branch"] = "master"
                 test_config["url"] = "git@github.com:gwsu2008/jenkins-ci-pipeline.git"
-                gitCheckout(config)
+                gitCheckout(test_config)
                 def workDir = "${WORKSPACE}"
                 sh 'find . '
                 commitId = utils.readCommitId(workDir)
