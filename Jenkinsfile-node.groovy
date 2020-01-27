@@ -41,7 +41,7 @@ node ('master') {
             stage('Build') {
                 test_config = [:]
                 test_config["branch"] = "master"
-                test_config["url"] = "git@github.com:gwsu2008/jenkins-ci-pipeline.git"
+                test_config["url"] = "https://github.com/gwsu2008/jenkins-ci-pipeline.git"
                 gitCheckout(test_config)
                 def workDir = "${WORKSPACE}"
                 sh 'find . '
