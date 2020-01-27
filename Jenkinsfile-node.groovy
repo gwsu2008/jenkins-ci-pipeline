@@ -14,9 +14,9 @@ config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.
 node ('master') {
     timestamps {
         try {
-            // stage('Cleanup workspace') {
-            //     step([$class: 'WsCleanup'])
-            // }
+            stage('Cleanup workspace') {
+                step([$class: 'WsCleanup'])
+            }
 
             parameters {
                 string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -44,9 +44,9 @@ node ('master') {
                 test_config["url"] = "https://github.com/gwsu2008/jenkins-ci-pipeline.git"
                 gitCheckout(test_config)
                 def workDir = "${WORKSPACE}"
-                sh 'find . '
                 commitId = utils.readCommitId(workDir)
-                sh 'echo "Hello World. Build commit '${commitId}'"'
+                println "Commit ID: " + commitId
+                sh 'echo "Hello World"'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
