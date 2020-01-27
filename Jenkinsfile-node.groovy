@@ -39,7 +39,8 @@ node ('master') {
             }
 
             stage('Build') {
-                commitId = utils.readCommitId(serviceDir)
+                def workDir = "${WORKSPACE}"
+                commitId = utils.readCommitId(workDir)
                 sh 'echo "Hello World. Build commit '${commitId}'"'
                 sh '''
                     echo "Multiline shell steps works too"
