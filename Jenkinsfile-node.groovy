@@ -11,7 +11,7 @@ config["branch"] = "master"
 config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.git"
 
 
-node ('master') {
+node ('docker-builders') {
     timestamps {
         try {
             stage('Cleanup workspace') {
