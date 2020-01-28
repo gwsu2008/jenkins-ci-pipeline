@@ -42,9 +42,13 @@ node ('docker-builders') {
             stage('Git-Checkout') {
                 gitCheckout(config)
             }
-            
+
             stage('Build') {
                 def workDir = "${WORKSPACE}"
+                config["branch"] = "master"
+                config["url"] = "git@github.com:gwsu2008/jenkins-ci-pipeline.git"
+                config["credentialsId"] = "21a4d43d-7d1a-4ba6-b6aa-703d7151e2c8"
+                gitCheckout(config)
                 commitId = utils.readCommitId(workDir)
                 println "Commit ID: " + commitId
                 sh 'echo "Hello World"'
