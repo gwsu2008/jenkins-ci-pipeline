@@ -39,6 +39,10 @@ node ('docker-builders') {
                 }
             }
 
+            stage('Git-Checkout') {
+                gitCheckout(config)
+            }
+            
             stage('Build') {
                 def workDir = "${WORKSPACE}"
                 commitId = utils.readCommitId(workDir)
@@ -73,10 +77,6 @@ node ('docker-builders') {
 
             stage('CheckStatus') {
                 checkStatus()
-            }
-        
-            stage('Git-Checkout') {
-                gitCheckout(config)
             }
         } catch (Exception e) {
             currentBuild.result = 'FAILURE'
