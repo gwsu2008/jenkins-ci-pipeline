@@ -8,7 +8,8 @@ stage('printBuildinfo') {
 
 def config = [:]
 config["branch"] = "master"
-config["url"] = "https://github.com/gwsu2008/jenkins-pipeline-shared-lib-sample.git"
+config["url"] = "git@github.com:gwsu2008/jenkins-pipeline-shared-lib-sample.git"
+config["credentialsId"] = "21a4d43d-7d1a-4ba6-b6aa-703d7151e2c8"
 
 
 node ('docker-builders') {
@@ -39,10 +40,6 @@ node ('docker-builders') {
             }
 
             stage('Build') {
-                test_config = [:]
-                test_config["branch"] = "master"
-                test_config["url"] = "https://github.com/gwsu2008/jenkins-ci-pipeline.git"
-                gitCheckout(test_config)
                 def workDir = "${WORKSPACE}"
                 commitId = utils.readCommitId(workDir)
                 println "Commit ID: " + commitId
